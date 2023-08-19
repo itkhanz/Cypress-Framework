@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/itkhanz/Cypress-Framework#readme",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "cypress": "^12.17.4"
   }
 }
