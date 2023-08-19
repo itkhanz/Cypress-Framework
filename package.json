@@ -1,0 +1,25 @@
+{
+  "name": "cypress-framework",
+  "version": "1.0.0",
+  "description": "cypress test automation framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itkhanz/Cypress-Framework.git"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "itkhanz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itkhanz/Cypress-Framework/issues"
+  },
+  "homepage": "https://github.com/itkhanz/Cypress-Framework#readme",
+  "devDependencies": {
+    "cypress": "^12.17.4"
+  }
+}
