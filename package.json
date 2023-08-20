@@ -4,7 +4,10 @@
   "description": "cypress test automation framework",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:registration": "npx cypress run --spec cypress/e2e/tests/RegistrationTest.cy.js",
+    "test:login": "npx cypress run --spec cypress/e2e/tests/LoginTest.cy.js",
+    "test:productData": "npx cypress run --spec cypress/e2e/tests/ProductDataTest.cy.js",
+    "test:addToCart": "npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js"
   },
   "repository": {
     "type": "git",
