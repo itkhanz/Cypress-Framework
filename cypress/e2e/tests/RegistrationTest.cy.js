@@ -1,3 +1,4 @@
+import AccountPage from "../pages/AccountPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage"
 
@@ -23,9 +24,8 @@ describe("Registration Flow", () => {
             .submitRegistraion()
             ;
 
-        RegisterPage
-            .elements
-            .successMessage()
+        AccountPage
+            .elements.h1Heading()
             .should('have.text', 'Your Account Has Been Created!');
 
     })

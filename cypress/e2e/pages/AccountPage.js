@@ -1,7 +1,10 @@
-class AccountPage{
+import BasePage from "./BasePage";
+
+class AccountPage extends BasePage{
 
     elements = {
-        accountHeading : () => cy.get('#content h2'),
+        h1Heading : () => cy.get('#content h1') ,
+        h2Heading : () => cy.get('#content h2'),
     }
 
 }

@@ -1,4 +1,6 @@
-class RegisterPage {
+import BasePage from "./BasePage";
+
+class RegisterPage extends BasePage{
 
 
      elements = {
@@ -10,7 +12,6 @@ class RegisterPage {
         passwordConfirmInput : () => cy.get('#input-confirm'),
         policyCheckbox : () => cy.get('input[type="checkbox"][name="agree"]'),
         continueBtn : () => cy.get('input[type="submit"][value="Continue"]'),
-        successMessage : () => cy.get('#content h1') 
     }
 
 
