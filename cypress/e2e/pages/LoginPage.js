@@ -1,4 +1,6 @@
-class LoginPage{
+import BasePage from "./BasePage";
+
+class LoginPage extends BasePage{
 
     elements = {
         continueBtn : () => cy.get('a').contains('Continue'),

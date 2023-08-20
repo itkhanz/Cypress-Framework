@@ -1,7 +1,14 @@
 import AccountPage from "../pages/AccountPage";
+import BasePage from "../pages/BasePage";
 import LoginPage from "../pages/LoginPage";
 
 describe("Success and Fail login flow", () => {
+
+    let basePage;
+
+    before(() => {
+        basePage = new BasePage();
+    })
 
     //Mocha automatically shares contexts for us across all applicable hooks for each test. 
     //Additionally these aliases and properties are automatically cleaned up after each test.
@@ -21,8 +28,7 @@ describe("Success and Fail login flow", () => {
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
 
         AccountPage
-            .elements
-            .accountHeading()
+            .elements.h2Heading()
             .should('contains.text', 'My Account');
     })
 
@@ -32,8 +38,19 @@ describe("Success and Fail login flow", () => {
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
 
         LoginPage
-            .elements
-            .alertMsg()
+            .elements.alertMsg()
             .should('contains.text', 'Warning');
+    })
+
+    it("should perform login and logout", function () {
+
+        LoginPage
+            .loginWithUI(this.users.validUser.email, this.users.validUser.password)
+
+        basePage.header.performLogout();
+
+        AccountPage
+            .elements.h1Heading()
+            .should('contains.text', 'Account Logout');
     })
 })
