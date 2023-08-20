@@ -25,3 +25,14 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 /// <reference types="Cypress" />
+
+import LoginPage from "../e2e/pages/LoginPage"
+
+Cypress.Commands.add('login', () => {
+
+    cy.fixture('users.json').then((users) => {
+
+        LoginPage.loginWithUI(users.validUser.email, users.validUser.password);
+    })
+
+})

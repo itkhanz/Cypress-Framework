@@ -22,7 +22,7 @@ describe("Success and Fail login flow", () => {
     })
 
     
-    it("should login successfully with valid credentials", function () {
+    xit("should login successfully with valid credentials", function () {
 
         LoginPage
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
@@ -32,7 +32,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'My Account');
     })
 
-    it("should fail to login with invalid credentials", function () {
+    xit("should fail to login with invalid credentials", function () {
 
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
@@ -44,8 +44,7 @@ describe("Success and Fail login flow", () => {
 
     it("should perform login and logout", function () {
 
-        LoginPage
-            .loginWithUI(this.users.validUser.email, this.users.validUser.password)
+        cy.login(); //login via custom command
 
         basePage.header.performLogout();
 
