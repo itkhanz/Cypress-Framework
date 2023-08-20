@@ -27,8 +27,7 @@ describe("Success and Fail login flow", () => {
         LoginPage
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
 
-        AccountPage
-            .elements.h2Heading()
+        AccountPage.h2Heading
             .should('contains.text', 'My Account');
     })
 
@@ -37,8 +36,7 @@ describe("Success and Fail login flow", () => {
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
 
-        LoginPage
-            .elements.alertMsg()
+        LoginPage.alertMsg
             .should('contains.text', 'Warning');
     })
 
@@ -48,8 +46,7 @@ describe("Success and Fail login flow", () => {
 
         basePage.header.performLogout();
 
-        AccountPage
-            .elements.h1Heading()
+        AccountPage.h1Heading
             .should('contains.text', 'Account Logout');
     })
 })

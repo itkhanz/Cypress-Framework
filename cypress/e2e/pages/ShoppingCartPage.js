@@ -2,19 +2,17 @@ import BasePage from "./BasePage";
 
 class ShoppingCartPage extends BasePage{
 
-    elements = {
-        cartItems : () => cy.get('form table>tbody>tr'),
-        checkoutBtn : () => cy.get('a').contains('Checkout')     
-    }
+    get cartItems() { return cy.get('form table>tbody>tr'); }
+    get checkoutBtn() { return cy.get('a').contains('Checkout'); }
 
     performCheckout() {
-        this.elements.checkoutBtn().click();
+        this.checkoutBtn.click();
     }
 
     getItemsAddedToCart() {
         let cartItems = [];
 
-        this.elements.cartItems().each(
+        this.cartItems.each(
             ($row, index, $rows) => {
 
             //within() scopes all subsequent cy commands to within this element. 

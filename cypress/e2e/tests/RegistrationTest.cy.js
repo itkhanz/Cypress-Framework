@@ -24,8 +24,7 @@ describe("Registration Flow", () => {
             .submitRegistraion()
             ;
 
-        AccountPage
-            .elements.h1Heading()
+        AccountPage.h1Heading
             .should('have.text', 'Your Account Has Been Created!');
 
     })

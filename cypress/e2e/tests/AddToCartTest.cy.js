@@ -19,8 +19,7 @@ describe("adding products to cart", () => {
         ProductsSearchPage
             .addProductToCart(PRODUCT);
 
-        ProductsSearchPage
-            .elements.alert()
+        ProductsSearchPage.alert
             .should('contains.text', `Success: You have added ${PRODUCT} to your shopping cart!`)
     })
 
@@ -33,8 +32,7 @@ describe("adding products to cart", () => {
         ProductDetailsPage
             .addProductToCart();
 
-        ProductDetailsPage
-            .elements.alert()
+        ProductDetailsPage.alert
             .should('contains.text', `Success: You have added ${PRODUCT} to your shopping cart!`)
     })
 

@@ -2,13 +2,11 @@ import BasePage from "./BasePage";
 
 class LoginPage extends BasePage{
 
-    elements = {
-        continueBtn : () => cy.get('a').contains('Continue'),
-        loginInput  : () => cy.get('#input-email'),
-        passwordInput : () => cy.get('#input-password'),
-        loginBtn : () => cy.get("input[value='Login']"),
-        alertMsg : () => cy.get('#account-login .alert'),
-    }
+    get continueBtn() { return cy.get('a').contains('Continue'); }
+    get loginInput() { return cy.get('#input-email'); }
+    get passwordInput() { return cy.get('#input-password'); }
+    get loginBtn() { return cy.get("input[value='Login']"); }
+    get alertMsg() { return cy.get('#account-login .alert'); }
 
     openUrl() {
         cy.visit('?route=account/login');   //Prefixes the baseUrl
@@ -17,14 +15,14 @@ class LoginPage extends BasePage{
 
     openRegistrationPage() {
         this.openUrl();
-        this.elements.continueBtn().click();
+        this.continueBtn.click();
     }
 
     loginWithUI(email, password) {
         this.openUrl();
-        this.elements.loginInput().type(email)
-        this.elements.passwordInput().type(password)
-        this.elements.loginBtn().click()
+        this.loginInput.type(email)
+        this.passwordInput.type(password)
+        this.loginBtn.click()
     }
 
 }
