@@ -15,9 +15,7 @@ class ProductsSearchPage extends BasePage{
 
     addProductToCart(productName) {
         this.productCard(productName).find('button').contains('Add to Cart').click({force: true});
-    }
-
-   
+    }   
 
 }
 

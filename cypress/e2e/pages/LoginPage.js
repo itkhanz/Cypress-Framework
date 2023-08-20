@@ -8,18 +8,19 @@ class LoginPage extends BasePage{
     get loginBtn() { return cy.get("input[value='Login']"); }
     get alertMsg() { return cy.get('#account-login .alert'); }
 
-    openUrl() {
-        cy.visit('?route=account/login');   //Prefixes the baseUrl
+    open() {
+        //cy.visit('?route=account/login');   //Prefixes the baseUrl
         //cy.visit(Cypress.env('URL'));   //loads the URL from env object in cypress.config.js
+        return super.open('?route=account/login')
     }
 
     openRegistrationPage() {
-        this.openUrl();
+        this.open();
         this.continueBtn.click();
     }
 
     loginWithUI(email, password) {
-        this.openUrl();
+        this.open();
         this.loginInput.type(email)
         this.passwordInput.type(password)
         this.loginBtn.click()
