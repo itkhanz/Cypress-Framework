@@ -1,5 +1,6 @@
 import HeaderComponent from "../components/HeaderComponent";
 
+
 class BasePage {
 
     constructor() {

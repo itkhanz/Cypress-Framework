@@ -22,7 +22,7 @@ describe("Success and Fail login flow", () => {
     })
 
     
-    xit("should login successfully with valid credentials", function () {
+    it("should login successfully with valid credentials", function () {
 
         LoginPage
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
@@ -32,7 +32,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'My Account');
     })
 
-    xit("should fail to login with invalid credentials", function () {
+    it("should fail to login with invalid credentials", function () {
 
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
