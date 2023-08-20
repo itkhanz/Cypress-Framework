@@ -8,14 +8,17 @@ describe("adding products to cart", () => {
     let basePage;
     const PRODUCT = "MacBook";
 
+    before(() => {
+        basePage = new BasePage();
+    })
+
     beforeEach(() => {
         cy.login(); //login via custom command
-        basePage = new BasePage();
         basePage.header.searchProduct(PRODUCT);
     })
 
     it("should add product to the cart from products search page", function () {
-
+        
         ProductsSearchPage
             .addProductToCart(PRODUCT);
 

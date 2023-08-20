@@ -6,10 +6,13 @@ describe('product details and search', () => {
 
     let basePage;
 
+    before(() => {
+        basePage = new BasePage();
+    })
+
+
     beforeEach(() => {
         cy.visit('');
-        basePage = new BasePage();
-
          // alias the product fixtures
          cy.fixture('product.json').as('productData')
     });
