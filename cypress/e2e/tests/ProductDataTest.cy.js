@@ -17,7 +17,28 @@ describe('product details and search', () => {
          cy.fixture('product.json').as('productData')
     });
 
-    it('validate the product data on products search page', () => {
+    it('should validate all the products presence in store', () => {
+
+        //This is a demonstration for data-driven testing using fixtures
+        //Test will be executed for all the products in products.json file
+        cy.fixture('products').then((products) => {
+
+            products.forEach(product => {
+
+                cy.log(product.name);
+
+                basePage
+                .header.searchProduct(product.name);
+
+                ProductsSearchPage
+                .productName(product.name) 
+                .should('have.text', product.name);
+
+            });
+        })
+    });
+
+    it('should validate the product data on products search page', () => {
         
         // use the special '@' syntax to access aliases which avoids the use of 'this'
         cy.get('@productData').then((productData) => {
@@ -43,7 +64,7 @@ describe('product details and search', () => {
         })
     });
 
-    it('validate the product data on product details page', () => {
+    it('should validate the product data on product details page', () => {
         
         // use the special '@' syntax to access aliases which avoids the use of 'this'
         cy.get('@productData').then((productData) => {

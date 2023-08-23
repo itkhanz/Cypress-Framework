@@ -1,0 +1,20 @@
+[
+    {
+        "name" : "iPhone",
+        "brand" : "Apple",
+        "price" : "123.20",
+        "description" : "iPhone is a revolutionary new mobile phone"
+    },
+    {
+        "name" : "MacBook",
+        "brand" : "Apple",
+        "price" : "602.00",
+        "description" : "Intel Core 2 Duo processor"
+    },
+    {
+        "name" : "Sony VAIO",
+        "brand" : "Sony",
+        "price" : "1,202.00",
+        "description" : "Unprecedented power. The next generation of processing technology has arrived."
+    }
+]
