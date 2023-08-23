@@ -53,7 +53,13 @@ https://naveenautomationlabs.com/opencart/index.php
   * `npm run test:login`
   * `npm run test:productData`
   * `npm run test:addToCart`
-
+* You can also filter the tests based on tag by providing `--env grepTags="<tag>"`
+  *For example, To run the tests that are tagged as `@smoke`:
+    * `npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js --env grepTags="@smoke"`
+    * To use the command line args with npm run scripts, append an extra `--`
+      * `npm run test:addToCart -- --env grepTags="@smoke"`
+  
+* Similarly you can filter the test based on its title by providing ` --env grep="<substring_in_spec_title>`
 
 ---
 

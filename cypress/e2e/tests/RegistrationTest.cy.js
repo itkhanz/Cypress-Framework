@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker';
 describe("Registration Flow", () => {
 
     //Unique credentials are required for registration, so we use faker library to generate test data
-    it("should register the new user", ()=> {
+    it("should register the new user", {tags: ['@regression', '@Register']}, ()=> {
 
         LoginPage.openRegistrationPage();
 

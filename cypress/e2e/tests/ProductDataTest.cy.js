@@ -17,7 +17,7 @@ describe('product details and search', () => {
          cy.fixture('product.json').as('productData')
     });
 
-    it('should validate all the products presence in store', () => {
+    it('should validate all the products presence in store', {tags: ['@regression', '@smoke', '@Product']}, () => {
 
         //This is a demonstration for data-driven testing using fixtures
         //Test will be executed for all the products in products.json file
@@ -38,7 +38,7 @@ describe('product details and search', () => {
         })
     });
 
-    it('should validate the product data on products search page', () => {
+    it('should validate the product data on products search page', {tags: ['@regression', '@Product']}, () => {
         
         // use the special '@' syntax to access aliases which avoids the use of 'this'
         cy.get('@productData').then((productData) => {
@@ -64,7 +64,7 @@ describe('product details and search', () => {
         })
     });
 
-    it('should validate the product data on product details page', () => {
+    it('should validate the product data on product details page', {tags: ['@regression', '@Product']}, () => {
         
         // use the special '@' syntax to access aliases which avoids the use of 'this'
         cy.get('@productData').then((productData) => {

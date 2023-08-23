@@ -18,7 +18,7 @@ describe("adding products to cart", () => {
         basePage.header.searchProduct(PRODUCT);
     })
 
-    it("should add product to the cart from products search page", function () {
+    it("should add product to the cart from products search page", {tags: ['@regression', '@smoke', '@Cart']}, function () {
         
         ProductsSearchPage
             .addProductToCart(PRODUCT);
@@ -28,7 +28,7 @@ describe("adding products to cart", () => {
     })
 
 
-    it("should add product to the cart from product details page", function () {
+    it("should add product to the cart from product details page", {tags: ['@regression', '@Cart']}, function () {
 
         ProductsSearchPage
             .openProduct(PRODUCT);
@@ -40,7 +40,7 @@ describe("adding products to cart", () => {
             .should('contains.text', `Success: You have added ${PRODUCT} to your shopping cart!`)
     })
 
-    it("should validate the presence of product in cart", function () {
+    it("should validate the presence of product in cart", {tags: ['@regression', '@Cart']}, function () {
 
         ProductsSearchPage
             .addProductToCart(PRODUCT);

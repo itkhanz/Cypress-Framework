@@ -22,7 +22,7 @@ describe("Success and Fail login flow", () => {
     })
 
     
-    it("should login successfully with valid credentials", function () {
+    it("should login successfully with valid credentials", {tags: ['@regression', '@smoke', '@Login']}, function () {
 
         LoginPage
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
@@ -31,7 +31,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'My Account');
     })
 
-    it("should fail to login with invalid credentials", function () {
+    it("should fail to login with invalid credentials", {tags: ['@regression', '@Login']}, function () {
 
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
@@ -40,7 +40,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'Warning');
     })
 
-    it("should perform login and logout", function () {
+    it("should perform login and logout", {tags: ['@regression', '@Login']}, function () {
 
         cy.login(); //login via custom command
 
