@@ -2,11 +2,12 @@ import BasePage from "../pages/BasePage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProductsSearchPage from "../pages/ProductsSearchPage";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
+// import * as constants from "../config/constants";  
+import { PRODUCT_TO_TEST as PRODUCT } from "../config/constants";  
 
 describe("adding products to cart", () => {
 
     let basePage;
-    const PRODUCT = "MacBook";
 
     before(() => {
         basePage = new BasePage();

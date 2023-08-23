@@ -1,8 +1,20 @@
 # Cypress Test Automation Framework
 
-Cypress test automation framework built with JavaScript (JS) that follows the Page Object Model (POM) design pattern to implement the tests for OpenCart E-commerce store.
+Cypress test automation framework built with JavaScript (JS) that follows the Page Object Model (POM) design pattern to implement the UI tests for OpenCart E-commerce store.
+
+Application Under Test (AUT):
+https://naveenautomationlabs.com/opencart/index.php
 
 ## Setup
+
+### Pre-requisites
+
+* Install NodeJS and NPM pakcage manager.
+* Code Editor of your choice e.g. Visual Studio Code
+* GIT Client (for remote tracking)
+
+#### Optional
+* Install [Cypress Snippets](https://marketplace.visualstudio.com/items?itemName=CliffSu.cypress-snippets) VS Code Extension that includes the most common cypress snippets.
 
 ### Setup from Scratch
 
@@ -14,12 +26,17 @@ Cypress test automation framework built with JavaScript (JS) that follows the Pa
 * Add `.gitignore` to exclude files and folders from GIT
 * Add `README.md` to document
 * Start with writing tests under `cypress/e2e` directory.
-  
+
 ### Using existing framework
 
-* clone git repo
-* navigate to folder and open terminal
-* run `npm install` to install the dependencies
+* Clone git repo
+* Navigate to folder and open terminal
+* Run `npm install` to install the framework dependencies
+  
+
+
+> To add IntelliSense for IDE like VS Code, add the [Triple slash directives](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives) to the head of test file or use the [Refernce type declaration via jsconfig.json](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives)
+
 
 --- 
 
@@ -29,6 +46,8 @@ Cypress test automation framework built with JavaScript (JS) that follows the Pa
 * `npx cypress run` will run all the test spec files located within `cypress/e2e` folder. By default test are run in headless mode on electron browser.
 * If you want to run test on specific browser, you can provide with `--browser` argument like `--browser chrome`.
 * To run tests in headed mode, pass argument `--headed`
+* To run a specific test spec, use the following cmd syntax:
+  `npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js --headed --browser chrome` will run the tests from AddToCartTest spec on chrome browser in headed mode.
 * Following custom test scripts are setup in `package.json` to run specific test suites in headless format:
   * `npm run test:registration`
   * `npm run test:login`
