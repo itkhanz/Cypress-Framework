@@ -58,8 +58,9 @@ https://naveenautomationlabs.com/opencart/index.php
     * `npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js --env grepTags="@smoke"`
     * To use the command line args with npm run scripts, append an extra `--`
       * `npm run test:addToCart -- --env grepTags="@smoke"`
-  
-* Similarly you can filter the test based on its title by providing ` --env grep="<substring_in_spec_title>`
+  * Similarly you can filter the test based on its title by providing ` --env grep="<substring_in_spec_title>`
+* To run the tests on any specific browser in headed mode:
+  * For example, `npm run test:addToCart -- --env grepTags="@smoke" --headed --browser chrome` will run the smoke tests from addToCart spec on chrome browser in headed mode
 
 ---
 
