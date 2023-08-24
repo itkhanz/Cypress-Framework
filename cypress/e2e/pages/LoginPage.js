@@ -1,4 +1,6 @@
 import BasePage from "./BasePage";
+const routes = require('../config/routes');
+import { ENDPOINT_PREFIX } from "../config/constants";
 
 class LoginPage extends BasePage{
 
@@ -11,7 +13,7 @@ class LoginPage extends BasePage{
     open() {
         //cy.visit('?route=account/login');   //Prefixes the baseUrl
         //cy.visit(Cypress.env('URL'));   //loads the URL from env object in cypress.config.js
-        return super.open('?route=account/login')
+        return super.open(ENDPOINT_PREFIX + routes.LOGIN_ENDPOINT)
     }
 
     openRegistrationPage() {

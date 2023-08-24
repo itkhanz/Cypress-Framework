@@ -1,4 +1,6 @@
 import BasePage from "./BasePage";
+const routes = require('../config/routes');
+import { ENDPOINT_PREFIX } from "../config/constants";
 
 class ProductsSearchPage extends BasePage{
 
@@ -8,6 +10,10 @@ class ProductsSearchPage extends BasePage{
     get productName() { return (productName) => this.productCard(productName).find('.caption h4 a')}
     get productDescription() { return (productName) => this.productCard(productName).find('.caption p').first()}
     get productPrice() { return (productName) => this.productCard(productName).find('.caption .price')}
+
+    open() {
+        return super.open(ENDPOINT_PREFIX + routes.PRODUCT_SEARCH_ENDPOINT)
+    }
 
     openProduct(productName) {
         this.productCard(productName).find('.caption h4 a').click();

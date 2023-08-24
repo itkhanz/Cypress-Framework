@@ -1,4 +1,6 @@
 import BasePage from "./BasePage";
+const routes = require('../config/routes');
+import { ENDPOINT_PREFIX } from "../config/constants";
 
 class AccountPage extends BasePage{
 
@@ -14,6 +16,10 @@ class AccountPage extends BasePage{
     //The advantage of using getter and setter is that we can use them as properties instead of functions.
     get h1Heading() {return cy.get('#content h1')};
     get h2Heading() {return cy.get('#content h2')};
+
+    open() {
+        return super.open(ENDPOINT_PREFIX + routes.ACCOUNT_ENDPOINT)
+    }
 
 }
 

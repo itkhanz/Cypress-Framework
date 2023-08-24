@@ -1,4 +1,6 @@
 import BasePage from "./BasePage";
+const routes = require('../config/routes');
+import { ENDPOINT_PREFIX } from "../config/constants";
 
 class ProductDetailsPage extends BasePage{
 
@@ -8,6 +10,10 @@ class ProductDetailsPage extends BasePage{
     get productName() { return cy.get('#content h1'); }
     get productPrice() { return cy.get('#content #product').prev('ul').find('h2'); }
     get productDescription() { return cy.get('#content .intro'); }
+
+    open(productID) {
+        return super.open(ENDPOINT_PREFIX + routes.PRODUCT_DETAILS_ENDPOINT + productID)
+    }
 
     addProductToCart() {
         this.addToCartBtn.click();

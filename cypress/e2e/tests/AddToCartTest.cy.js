@@ -3,7 +3,7 @@ import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProductsSearchPage from "../pages/ProductsSearchPage";
 import ShoppingCartPage from "../pages/ShoppingCartPage";
 // import * as constants from "../config/constants";  
-import { PRODUCT_TO_TEST as PRODUCT } from "../config/constants";  
+import { PRODUCT_TO_TEST as PRODUCT, PRODUCT_ID_TO_TEST as PRODUCT_ID } from "../config/constants";  
 
 describe("adding products to cart", { tags: ['@Cart', '@regression'] }, () => {
 
@@ -30,8 +30,12 @@ describe("adding products to cart", { tags: ['@Cart', '@regression'] }, () => {
 
     it("should add product to the cart from product details page", function () {
 
+        
+        //open product detais page directly with URL
+        //ProductDetailsPage.open(PRODUCT_ID)
+
         ProductsSearchPage
-            .openProduct(PRODUCT);
+            .openProduct(PRODUCT); 
 
         ProductDetailsPage
             .addProductToCart();

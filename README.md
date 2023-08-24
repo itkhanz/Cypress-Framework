@@ -44,6 +44,8 @@ https://naveenautomationlabs.com/opencart/index.php
 
 * Register with a new user on the website.
 * Save the login credentials for registered user under `cypress/fixtures/users.json`
+* Project specific constants are defined under `cypress/config/constants.js`
+* URL routes for pages are defined under `cypress/config/routes.js`. This allows to open the page directly by calling the `open()` method of page.
 
 ---
 

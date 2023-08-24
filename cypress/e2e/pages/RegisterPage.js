@@ -1,4 +1,6 @@
 import BasePage from "./BasePage";
+const routes = require('../config/routes');
+import { ENDPOINT_PREFIX } from "../config/constants";
 
 class RegisterPage extends BasePage{
 
@@ -11,6 +13,10 @@ class RegisterPage extends BasePage{
     get passwordConfirmInput() { return cy.get('#input-confirm'); }
     get policyCheckbox() { return cy.get('input[type="checkbox"][name="agree"]'); }
     get continueBtn() { return cy.get('input[type="submit"][value="Continue"]'); }
+
+    open() {
+        return super.open(ENDPOINT_PREFIX + routes.REGISTRATION_ENDPOINT)
+    }
 
 
     enterfirstName(username) {
