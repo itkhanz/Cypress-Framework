@@ -62,6 +62,7 @@ https://naveenautomationlabs.com/opencart/index.php
   * `npm run test:login`
   * `npm run test:productData`
   * `npm run test:addToCart`
+  * `npm run test:wishlist`
 * You can also filter the tests based on tag by providing `--env grepTags="<tag>"`
   * For example, To run the tests that are tagged as `@smoke`:
     * `npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js --env grepTags="@smoke"`

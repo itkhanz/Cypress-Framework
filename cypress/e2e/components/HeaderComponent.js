@@ -5,6 +5,7 @@ export default class HeaderComponent {
     get myAccountDropdown() { return cy.get('#top-links a[title="My Account"]'); }
     get shoppingCart() { return cy.get('#top-links a[title="Shopping Cart"]'); }
     get logoutLink() { return cy.get('#top-links a').contains('Logout'); }
+    get wishListMenu() { return cy.get('#top-links #wishlist-total'); }
 
     searchProduct(product) {
         this.searchInput.clear()
@@ -19,6 +20,10 @@ export default class HeaderComponent {
 
     openShoppingCart() {
         this.shoppingCart.click()
+    }
+
+    openWishlist() {
+        this.wishListMenu.click();
     }
 
 }

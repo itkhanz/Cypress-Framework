@@ -51,7 +51,7 @@ describe("adding products to cart", { tags: ['@Cart', '@regression'] }, () => {
 
         basePage.header.openShoppingCart();
 
-        ShoppingCartPage.getItemsAddedToCart(PRODUCT).should('include', PRODUCT);
+        ShoppingCartPage.getItemsAddedToCart().should('include', PRODUCT);
 
     })
 })

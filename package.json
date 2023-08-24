@@ -7,7 +7,8 @@
     "test:registration": "npx cypress run --spec cypress/e2e/tests/RegistrationTest.cy.js",
     "test:login": "npx cypress run --spec cypress/e2e/tests/LoginTest.cy.js",
     "test:productData": "npx cypress run --spec cypress/e2e/tests/ProductDataTest.cy.js",
-    "test:addToCart": "npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js"
+    "test:addToCart": "npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js",
+    "test:wishlist": "npx cypress run --spec cypress/e2e/tests/WishlistTest.cy.js"
   },
   "repository": {
     "type": "git",
