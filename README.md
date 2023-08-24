@@ -40,6 +40,13 @@ https://naveenautomationlabs.com/opencart/index.php
 
 --- 
 
+## Configurarion
+
+* Register with a new user on the website.
+* Save the login credentials for registered user under `cypress/fixtures/users.json`
+
+---
+
 ## Running tests
 
 * `npx cypress open` will open the cypress test runner so you can run the tests from it

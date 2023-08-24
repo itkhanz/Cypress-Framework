@@ -2,7 +2,7 @@ import AccountPage from "../pages/AccountPage";
 import BasePage from "../pages/BasePage";
 import LoginPage from "../pages/LoginPage";
 
-describe("Success and Fail login flow", () => {
+describe("Success and Fail login flow", { tags: ['@Login', '@regression'] }, () => {
 
     let basePage;
 
@@ -22,7 +22,7 @@ describe("Success and Fail login flow", () => {
     })
 
     
-    it("should login successfully with valid credentials", {tags: ['@regression', '@smoke', '@Login']}, function () {
+    it("should login successfully with valid credentials", {tags: '@smoke'}, function () {
 
         LoginPage
             .loginWithUI(this.users.validUser.email, this.users.validUser.password)
@@ -31,7 +31,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'My Account');
     })
 
-    it("should fail to login with invalid credentials", {tags: ['@regression', '@Login']}, function () {
+    it("should fail to login with invalid credentials", function () {
 
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)
@@ -40,7 +40,7 @@ describe("Success and Fail login flow", () => {
             .should('contains.text', 'Warning');
     })
 
-    it("should perform login and logout", {tags: ['@regression', '@Login']}, function () {
+    it("should perform login and logout", function () {
 
         cy.login(); //login via custom command
 

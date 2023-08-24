@@ -4,10 +4,10 @@ import RegisterPage from "../pages/RegisterPage"
 
 import { faker } from '@faker-js/faker';
 
-describe("Registration Flow", () => {
+describe("Registration Flow", { tags: ['@Register', '@regression'] }, () => {
 
     //Unique credentials are required for registration, so we use faker library to generate test data
-    it("should register the new user", {tags: ['@regression', '@Register']}, ()=> {
+    it("should register the new user", ()=> {
 
         LoginPage.openRegistrationPage();
 
