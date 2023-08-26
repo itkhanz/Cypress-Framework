@@ -11,6 +11,13 @@ class ProductsSearchPage extends BasePage{
     get productDescription() { return (productName) => this.productCard(productName).find('.caption p').first()}
     get productPrice() { return (productName) => this.productCard(productName).find('.caption .price')}
 
+    get sortDropdown() { return cy.get('#input-sort'); }
+    get allProductsPrices() { return cy.get('.price'); }
+    get allProductNames() { return cy.get('.caption h4 a'); }
+
+    get catrgoryDropdown() { return cy.get('select[name="category_id"]'); }
+    get searchBtn() { return cy.get('#button-search'); }
+
     open() {
         return super.open(ENDPOINT_PREFIX + routes.PRODUCT_SEARCH_ENDPOINT)
     }
@@ -22,6 +29,18 @@ class ProductsSearchPage extends BasePage{
     addProductToCart(productName) {
         this.productCard(productName).find('button').contains('Add to Cart').click({force: true});
     }   
+
+    sortSearchResultsBy(sortingCriteria) {
+        this.sortDropdown.select(sortingCriteria);
+    }
+
+    filterSearchResultsByCategory(category) {
+        this.catrgoryDropdown.select(category);
+    }
+
+    applyFilter() {
+        this.searchBtn.click();
+    }
 
 }
 

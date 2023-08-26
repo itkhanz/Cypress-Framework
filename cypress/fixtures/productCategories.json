@@ -1,0 +1,18 @@
+{
+	"categories": [
+		{
+			"categoryName": "Cameras",
+			"products": [
+				"Canon EOS 5D",
+				"Nikon D300"
+			]
+		},
+		{
+			"categoryName": "Monitors",
+			"products": [
+				"Apple Cinema 30\"",
+				"Samsung SyncMaster 941BW"
+			]
+		}
+	]
+}

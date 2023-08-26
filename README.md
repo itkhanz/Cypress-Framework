@@ -2,6 +2,9 @@
 
 Cypress test automation framework built with JavaScript (JS) that follows the Page Object Model (POM) design pattern to implement the UI tests for OpenCart E-commerce store.
 
+> If you are a beginner to Cypress, refer to my other repo to refresh your Cypress knowledge which will serve as a starting-point to Cypress testing:
+[Cypress-E2E-Web-and-API-Testing](https://github.com/itkhanz/Cypress-E2E-Web-and-API-Testing)
+
 Application Under Test (AUT):
 https://naveenautomationlabs.com/opencart/index.php
 
@@ -63,6 +66,7 @@ https://naveenautomationlabs.com/opencart/index.php
   * `npm run test:productData`
   * `npm run test:addToCart`
   * `npm run test:wishlist`
+  * `npm run test:productSearch`
 * You can also filter the tests based on tag by providing `--env grepTags="<tag>"`
   * For example, To run the tests that are tagged as `@smoke`:
     * `npx cypress run --spec cypress/e2e/tests/AddToCartTest.cy.js --env grepTags="@smoke"`
@@ -88,3 +92,6 @@ https://naveenautomationlabs.com/opencart/index.php
   * [mochawesome](https://www.npmjs.com/package/mochawesome)
   * [cypress-allure-plugin](https://www.npmjs.com/package/@shelex/cypress-allure-plugin)
 
+* Terminal output shows the results summary as: 
+  
+<img src="doc/results-terminal-output.PNG>
