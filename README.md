@@ -94,4 +94,4 @@ https://naveenautomationlabs.com/opencart/index.php
 
 * Terminal output shows the results summary as: 
   
-<img src="doc/results-terminal-output.PNG>
+<img src="doc/results-terminal-output.PNG">
