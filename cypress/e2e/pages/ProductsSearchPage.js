@@ -48,7 +48,7 @@ class ProductsSearchPage extends BasePage{
         
         //This will evaluate to true if value is not:
         //null, undefined, NaN, empty String(""), 0 or false
-        //Helps in validation that array returned is not empty or undefined
+        //Helps in validation that array returned is not empty or
         if(productNamesArr) {
             return productNamesArr;
         }

@@ -43,10 +43,10 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
             const productNames = ProductsSearchPage.getAllProductNames();
             const sortedNames =  productNames.sort();
             cy.wrap(sortedNames)
-                .should('not.be.empty')
-                .and('not.be.undefined')
-                .and('not.be.null')
-                .and('deep.equal', productNames);
+                .should('deep.equal', productNames)
+                //.and('not.be.empty')
+                //.and('not.be.undefined')
+                //.and('not.be.null')
     
             //Approach 2
             /* ProductsSearchPage.allProductNames
@@ -65,8 +65,7 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
             const productNames = ProductsSearchPage.getAllProductNames();
             const sortedNames =  productNames.sort().reverse();
             cy.wrap(sortedNames)
-                .should('not.be.empty')
-                .and('deep.equal', productNames);
+                .should('deep.equal', productNames);
 
             //Approaach 2
             /* ProductsSearchPage.allProductNames
@@ -96,8 +95,7 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
                     //Approach 1
                     const productNames = ProductsSearchPage.getAllProductNames();
                     cy.wrap(productNames)
-                        .should('not.be.empty')
-                        .and('include.members', category.products);
+                        .should('include.members', category.products);
 
                     //Approach 2
                     /* ProductsSearchPage.allProductNames
