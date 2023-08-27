@@ -14,6 +14,10 @@ class RegisterPage extends BasePage{
     get policyCheckbox() { return cy.get('input[type="checkbox"][name="agree"]'); }
     get continueBtn() { return cy.get('input[type="submit"][value="Continue"]'); }
 
+    get inputValidationErr() { return (inputField) => cy.wrap(inputField).next('.text-danger'); }
+
+    get alertMsg() { return cy.get('#account-register .alert'); }
+
     open() {
         return super.open(ENDPOINT_PREFIX + routes.REGISTRATION_ENDPOINT)
     }

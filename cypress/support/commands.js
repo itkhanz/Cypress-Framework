@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import LoginPage from "../e2e/pages/LoginPage"
+import RegisterPage from "../e2e/pages/RegisterPage";
 
 Cypress.Commands.add('login', () => {
 
@@ -33,4 +34,10 @@ Cypress.Commands.add('login', () => {
         LoginPage.loginWithUI(users.validUser.email, users.validUser.password);
     })
 
+})
+
+Cypress.Commands.add('validateFormField', (inputField, message) => {
+    return inputField.then(($input) => RegisterPage.inputValidationErr($input))
+            .should('be.visible')
+            .and('have.text', message)
 })
