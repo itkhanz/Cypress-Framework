@@ -42,6 +42,19 @@ class ProductsSearchPage extends BasePage{
         this.searchBtn.click();
     }
 
+    getAllProductNames() {
+        const productNamesArr = []
+        this.allProductNames.each(($productName) => productNamesArr.push($productName.text()));
+        
+        //This will evaluate to true if value is not:
+        //null, undefined, NaN, empty String(""), 0 or false
+        //Helps in validation that array returned is not empty or undefined
+        if(productNamesArr) {
+            return productNamesArr;
+        }
+        return null;
+    }
+
 }
 
 

@@ -38,26 +38,44 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
     
         it('should check that the products are sorted by Name (A - Z)', () => {
             ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.NAME_ASC);
+
+            //Approach 1
+            const productNames = ProductsSearchPage.getAllProductNames();
+            const sortedNames =  productNames.sort();
+            cy.wrap(sortedNames)
+                .should('not.be.empty')
+                .and('not.be.undefined')
+                .and('not.be.null')
+                .and('deep.equal', productNames);
     
-            ProductsSearchPage.allProductNames
+            //Approach 2
+            /* ProductsSearchPage.allProductNames
             .should('not.be.empty')
             .then(($names) => {
-                const names = extractProductsName($names);
-                const sorted = Cypress._.orderBy(names, [name => name.toLowerCase()])
-                expect(sorted).to.deep.equal(names)
-            })
+                const productNames = extractProductsName($names);
+                const sortedNames = Cypress._.orderBy(productNames, [name => name.toLowerCase()])
+                expect(sortedNames).to.deep.equal(productNames)
+            }) */
         });
     
         it('should check that the products are sorted by Price Name (Z - A)', () => {
             ProductsSearchPage.sortSearchResultsBy(SORTING_CRITERIA.NAME_DESC);
-    
-            ProductsSearchPage.allProductNames
+
+            //Approach 1
+            const productNames = ProductsSearchPage.getAllProductNames();
+            const sortedNames =  productNames.sort().reverse();
+            cy.wrap(sortedNames)
+                .should('not.be.empty')
+                .and('deep.equal', productNames);
+
+            //Approaach 2
+            /* ProductsSearchPage.allProductNames
             .should('not.be.empty')
             .then(($names) => {
                 const names = extractProductsName($names);
                 const sorted = Cypress._.orderBy(names, [name => name.toLowerCase()], ['desc'])
                 expect(sorted).to.deep.equal(names)
-            })
+            }) */
     
         });
     });
@@ -75,11 +93,18 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
                     ProductsSearchPage.filterSearchResultsByCategory(category.categoryName);
                     ProductsSearchPage.applyFilter();
 
-                    ProductsSearchPage.allProductNames
+                    //Approach 1
+                    const productNames = ProductsSearchPage.getAllProductNames();
+                    cy.wrap(productNames)
+                        .should('not.be.empty')
+                        .and('include.members', category.products);
+
+                    //Approach 2
+                    /* ProductsSearchPage.allProductNames
                     .then(($names) => {
                         const productNamesList = extractProductsName($names);
                         expect(productNamesList).to.include.members(category.products)
-                    })
+                    }) */
                 });
             })
         });
