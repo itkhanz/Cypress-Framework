@@ -1,6 +1,7 @@
 import { SORTING_CRITERIA } from "../config/constants";
 import { default as ProductsSearchPage } from "../pages/ProductsSearchPage";
 import { extractActualPrices, extractProductsName } from "../utils/ProductUtils";
+import productCategories  from "../../fixtures/productCategories.json";
 
 describe('Products meeting the search criteria', { tags: ['@Search', '@regression'] }, () => {
 
@@ -80,7 +81,33 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
     });
 
     context('Categories', () => {
-        beforeEach(() => {
+
+        /************ This approach creates tests dynamically based on loaded test data  ************/
+        productCategories.categories.forEach(category => {
+        
+            it(`should filter the search results by category: ${category.categoryName}`, {tags: '@smoke'}, () => {
+                ProductsSearchPage.filterSearchResultsByCategory(category.categoryName);
+                ProductsSearchPage.applyFilter();
+
+                //Approach 1
+                const productNames = ProductsSearchPage.getAllProductNames();
+                cy.wrap(productNames)
+                    .should('include.members', category.products);
+
+                //Approach 2
+                /* ProductsSearchPage.allProductNames
+                .then(($names) => {
+                    const productNamesList = extractProductsName($names);
+                    expect(productNamesList).to.include.members(category.products)
+                }) */
+
+            });
+        
+        });
+
+
+        /************ This approach considers it the same test and run 2 times with different data ***************/
+        /* beforeEach(() => {
             cy.fixture('productCategories.json').as('productCategories');
         });
 
@@ -92,20 +119,13 @@ describe('Products meeting the search criteria', { tags: ['@Search', '@regressio
                     ProductsSearchPage.filterSearchResultsByCategory(category.categoryName);
                     ProductsSearchPage.applyFilter();
 
-                    //Approach 1
                     const productNames = ProductsSearchPage.getAllProductNames();
                     cy.wrap(productNames)
                         .should('include.members', category.products);
 
-                    //Approach 2
-                    /* ProductsSearchPage.allProductNames
-                    .then(($names) => {
-                        const productNamesList = extractProductsName($names);
-                        expect(productNamesList).to.include.members(category.products)
-                    }) */
                 });
             })
-        });
+        }); */
     });
 
     
