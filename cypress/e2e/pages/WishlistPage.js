@@ -8,6 +8,8 @@ class WishlistPage extends BasePage{
     get removeFromWishlistBtn() { return cy.get('[data-original-title="Remove"]'); }
     get emptyWishlistDesc() { return cy.get('#content>h2+p'); }
 
+    get productNameCol() { return cy.contains('table thead td', 'Product Name'); }
+
     open() {
         return super.open(ENDPOINT_PREFIX + routes.WISHLIST_ENDPOINT)
     }
@@ -15,19 +17,24 @@ class WishlistPage extends BasePage{
     getItemsAddedToWishlist() {
         let wishlistItemsArr = [];
 
-        this.wishlistItems.each(
-            ($row, index, $rows) => {
-
-            //within() scopes all subsequent cy commands to within this element. 
-            cy.wrap($row).within( () => {
-
-                cy.get("td:nth-of-type(2) a").each(($col, index, $cols) => {
-                        cy.log($col.text())
-                        wishlistItemsArr.push($col.text())
+        //First grab a column index with Product Name header
+        this.productNameCol
+            .invoke('index')
+            .should('be.a', 'number')
+            .then((columnIndex) => {
+                //Iterate over all rows in table
+                this.wishlistItems.each( ($wishlistItem) => {
+                        //Now find the table cell using column index
+                        cy.wrap($wishlistItem)
+                        .find('td a')
+                        .eq(columnIndex)
+                        .invoke('text').then((productName) => {
+                            wishlistItemsArr.push(productName)
+                        });
+                
                 })
-            })
-           
-        })
+
+             })
 
         return cy.wrap(wishlistItemsArr);  //Wrap elements to continue executing commands
     }
