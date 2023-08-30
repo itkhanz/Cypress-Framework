@@ -49,11 +49,15 @@ https://naveenautomationlabs.com/opencart/index.php
 * Save the login credentials for registered user under `cypress/fixtures/users.json`
 * Project specific constants are defined under `cypress/config/constants.js`
 * URL routes for pages are defined under `cypress/config/routes.js`. This allows to open the page directly by calling the `open()` method of page.
+* [Configuration](https://docs.cypress.io/guides/references/configuration)
+* [Cypress.config](https://docs.cypress.io/api/cypress-api/config)
+* 
 
 ---
 
 ## Running tests
-
+* [Command Line](https://docs.cypress.io/guides/guides/command-line)
+* [Environment Variables](https://docs.cypress.io/guides/guides/environment-variables)
 * `npx cypress open` will open the cypress test runner so you can run the tests from it
 * `npx cypress run` will run all the test spec files located within `cypress/e2e` folder. By default test are run in headless mode on electron browser.
 * If you want to run test on specific browser, you can provide with `--browser` argument like `--browser chrome`.
@@ -75,6 +79,28 @@ https://naveenautomationlabs.com/opencart/index.php
   * Similarly you can filter the test based on its title by providing ` --env grep="<substring_in_spec_title>`
 * To run the tests on any specific browser in headed mode:
   * For example, `npm run test:addToCart -- --env grepTags="@smoke" --headed --browser chrome` will run the smoke tests from addToCart spec on chrome browser in headed mode
+* [Cypress basics: Using baseUrl](https://filiphric.com/cypress-basics-using-baseurl)
+* You can also change baseUrl during test execution:
+  * You actually don’t need to set up your baseUrl in the cypress.config.js file at all. Instead, it is possible to resolve it when opening Cypress: `npx cypress open --config baseUrl=https://staging.naveenautomationlabs.com/opencart/index.php`
+  * We can now easily switch between different URLs by passing the name of the application version to the --env flag:
+  ```javascript
+  //will use https://naveenautomationlabs.com/opencart/index.php
+  npx cypress run --env version="local"
+  //will use https://stage.naveenautomationlabs.com/opencart/index.php
+  npx cypress run --env version="stage"
+  //will use https://prod.naveenautomationlabs.com/opencart/index.php
+  npx cypress run --env version="prod"
+  //will use fallback to https://naveenautomationlabs.com/opencart/index.php
+  npx cypress run 
+  ```
+* Summing up all the above configuration, here is an example:
+  * `npm run test:registration -- --env version="stage",grepTags="@smoke" --headed --browser chrome` will run tests with following configurations:
+    *  **spec** `RegistrationTest.cy.js` 
+    *  **browser** `chrome`
+    *  **mode** `headed`
+    *  **tag** `smoke`
+    *  **version** `stage`
+    *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
 
 ---
 
