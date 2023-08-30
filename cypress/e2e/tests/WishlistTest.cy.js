@@ -2,7 +2,7 @@ import { PRODUCT_ID_TO_TEST, PRODUCT_TO_TEST } from "../config/constants";
 import { default as ProductDetailsPage } from "../pages/ProductDetailsPage";
 import WishlistPage from "../pages/WishlistPage";
 
-describe('adding and removing products from wishlist', () => {
+describe('adding and removing products from wishlist', { tags: ['@Wishlist', '@regression'] }, () => {
     context('logged-in user', () => {
         beforeEach(() => {
             cy.login();
@@ -29,7 +29,7 @@ describe('adding and removing products from wishlist', () => {
                 .should('contains.text', `Success: You have added ${PRODUCT_TO_TEST} to your wish list!`);
         });
     
-        it('should validate the presence of product in wishlist', () => {
+        it('should validate the presence of product in wishlist', {tags: '@smoke'}, () => {
     
             ProductDetailsPage.header.openWishlist();
 

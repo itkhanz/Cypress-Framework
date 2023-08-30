@@ -32,7 +32,7 @@ describe("Account Registration", { tags: ['@Register', '@regression'] }, () => {
 
     })
 
-    it.only('should validate the error messages for missing input fields', () => {
+    it('should validate the error messages for missing input fields', {tags: '@smoke'}, () => {
        RegisterPage.submitRegistraion();
 
        //Instead of repeating the below code for querying and asserting each input field repeatedly
