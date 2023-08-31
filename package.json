@@ -4,16 +4,14 @@
   "description": "cypress test automation framework",
   "main": "index.js",
   "scripts": {
-    "test:local" : "npx cypress run --env version=\"local\"",
-    "test:dev" : "npx cypress run --env version=\"dev\"",
-    "test:qa" : "npx cypress run --env version=\"qa\"",
-    "test:stage" : "npx cypress run --env version=\"stage\"",
-    "test:prod" : "npx cypress run --env version=\"prod\"",
-
-    "test:regression" : "npx cypress run --env grepTags=@regression",
-    "test:smoke" : "npx cypress run --env grepTags=@smoke",
-
-    "test:all" :  "npx cypress run",
+    "test:local": "npx cypress run --env version=\"local\"",
+    "test:dev": "npx cypress run --env version=\"dev\"",
+    "test:qa": "npx cypress run --env version=\"qa\"",
+    "test:stage": "npx cypress run --env version=\"stage\"",
+    "test:prod": "npx cypress run --env version=\"prod\"",
+    "test:regression": "npx cypress run --env grepTags=@regression",
+    "test:smoke": "npx cypress run --env grepTags=@smoke",
+    "test:all": "npx cypress run",
     "test:registration": "npx cypress run --spec cypress/e2e/tests/RegistrationTest.cy.js",
     "test:login": "npx cypress run --spec cypress/e2e/tests/LoginTest.cy.js",
     "test:productData": "npx cypress run --spec cypress/e2e/tests/ProductDataTest.cy.js",
@@ -37,7 +35,7 @@
   "devDependencies": {
     "@cypress/grep": "^3.1.5",
     "@faker-js/faker": "^8.0.2",
-    "cypress": "^12.17.4",
+    "cypress": "^13.0.0",
     "cypress-mochawesome-reporter": "^3.5.1"
   }
 }
