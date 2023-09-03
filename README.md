@@ -61,6 +61,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 * Register with a new user on the website manually for first time.
 * Save the login credentials for registered user under `cypress/fixtures/users.json`
+* Add the `projectId` for Cypress Cloud in `cypress.config.js`
   
 > To add IntelliSense for IDE like VS Code, add the [Triple slash directives](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives) to the head of test file or use the [Refernce type declaration via jsconfig.json](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives)
 
@@ -115,7 +116,8 @@ https://naveenautomationlabs.com/opencart/index.php
     *  **environmentName** `stage`
     *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
 
-
+* You can add cloud execution and test recording to the existing scripts by appending `--record --key <key>` to the end of npm test scripts. For example, `npm run test:registration -- --env environmentName="local",grepTags="@smoke" --record --key <KEY_VALUE>`
+* 
 * Terminal output shows the results summary as: 
   
 <img src="doc/results-terminal-output.PNG">
@@ -141,3 +143,24 @@ https://naveenautomationlabs.com/opencart/index.php
 
   
 <img src="doc/mochawesome-failed-test-report.png">
+
+## Cypress Cloud
+
+* Record a run to see your test results in Cypress Cloud. You can then optimize your test suite, debug failing and flaky tests, Test Replay, watch video, view console output and screenshots, and integrate with your favorite tools.
+* [Cypress Cloud documentation](https://docs.cypress.io/guides/cloud/introduction)
+* [Cypress Project ID and Record Key](https://docs.cypress.io/guides/cloud/account-management/projects)
+* [Record tests](https://docs.cypress.io/guides/continuous-integration/introduction#Record-tests)
+  * Once you set up your project to record, Cypress generates a unique projectId for your project and automatically insert it into your Cypress configuration file. The projectId is a 6 character string in your Cypress configuration.
+  * The record key is used to authenticate that your project is allowed to record tests to Cypress Cloud. As long as your record key stays private, no one will be able to record test runs for your project - even if they have your projectId.
+  * Create `cypress.env.json` in root directory that Cypress will automatically check. Values in here will overwrite conflicting environment variables in your Cypress configuration.This strategy is useful because if you add cypress.env.json to your `.gitignore` file, the values in here can be different for each developer machine.
+  ```json
+  {
+    "projectId": ""
+  }
+  ```
+
+* Run the test via `npx cypress run --record --key <record key>`
+
+<img src="doc/cyress-cloud-specs.PNG">
+
+<img src="doc/cyress-cloud-results.PNG">

@@ -37,6 +37,9 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
 
+  //Cypress uses your projectId and Record Key together to uniquely identify projects.
+  //projectId: '',
+
   trashAssetsBeforeRuns : true,   //Whether Cypress will trash assets within the downloadsFolder, screenshotsFolder, and videosFolder before tests run with cypress run.
   
   //Folders/ Files
@@ -97,7 +100,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
 
-
       //Load the testing configuration and environment variables from separate JSON files.
       //we put the baseUrl and envionment specific config settings in settings/env.settings.json
       const environmentName = config.env.environmentName || 'local';
@@ -119,7 +121,12 @@ module.exports = defineConfig({
           ...settings.env,
         }
       }
-      console.log('loaded settings for environment %s', environmentName)
+      console.log('loaded settings for environment %s', environmentName);
+
+      //we save the projectId as env variable in cypress.env.json that is loaded automatically by cypress
+      if(config.env.projectId) {
+        config.projectId = config.env.projectId;
+      }
 
       //cypress-mochawesome-reporter
       require('cypress-mochawesome-reporter/plugin')(on);  
