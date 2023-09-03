@@ -11,6 +11,7 @@ node_modules
 cypress/videos
 cypress/screenshots
 cypress/reports
+cypress/results
 cypress/downloads
 
 # Values in here will overwrite conflicting environment variables in your Cypress configuration.

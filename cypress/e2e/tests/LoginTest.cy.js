@@ -31,7 +31,7 @@ describe("Success and Fail login flow", { tags: ['@Login', '@regression'] }, () 
             .should('contains.text', 'My Account');
     })
 
-    it("should fail to login with invalid credentials", function () {
+    it("should fail to login with invalid credentials", {tags: '@smoke'}, function () {
 
         LoginPage
             .loginWithUI(this.users.invalidUser.email, this.users.invalidUser.password)

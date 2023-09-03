@@ -63,14 +63,10 @@ module.exports = defineConfig({
   defaultCommandTimeout : 5000, //Time, in milliseconds, to wait until most DOM based commands are considered timed out.
 
 
-  //cypress-mochawesome-reporter
-  reporter: 'cypress-mochawesome-reporter',  
+  //reports configuration
+  reporter: 'cypress-multi-reporters',
   reporterOptions: {
-    charts: true, //Genarates Chart in HTML report
-    reportPageTitle: 'OpenCart Test Report', //Report title will be set to the mentioned string
-    embeddedScreenshots: true, //Screenshot will be embedded within the report
-    inlineAssets: true, //No separate assets folder will be created
-    videoOnFailOnly: false, //If Videos are recorded and added to the report, setting this to true will add the videos only to tests with failures.
+    configFile: 'reporter-config.json',
   },
 
   //The number of times to retry a failing test. Can be configured to apply to cypress run or cypress open separately.

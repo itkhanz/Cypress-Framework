@@ -1,0 +1,14 @@
+{
+	"reporterEnabled": "cypress-mochawesome-reporter, mocha-junit-reporter",
+	"mochaJunitReporterReporterOptions": {
+		"mochaFile": "cypress/results/junit/results-[hash].xml"
+	},
+	"cypressMochawesomeReporterReporterOptions": {
+        "reportDir": "cypress/results/cypress-mochawesome-reporter",
+		"charts": true,
+		"reportPageTitle": "OpenCart Test Report",
+		"embeddedScreenshots": true,
+		"inlineAssets": true,
+		"videoOnFailOnly": false
+	}
+}

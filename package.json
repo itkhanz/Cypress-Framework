@@ -4,14 +4,18 @@
   "description": "cypress test automation framework",
   "main": "index.js",
   "scripts": {
+    "results-junit:delete": "rm -rf cypress/results/junit/* || true",
+    "results-junit:combine": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\"",
+    "report:pre": "npm run results-junit:delete",
+    "report:post": "npm run results-junit:combine",
+    "test:all": "npm run report:pre && npx cypress run && npm run report:post",
+    "test:regression": "npm run report:pre && npx cypress run --env grepTags=@regression && npm run report:post",
+    "test:smoke": "npm run report:pre && npx cypress run --env grepTags=@smoke && npm run report:post",
     "test:local": "npx cypress run --env environmentName=\"local\"",
     "test:dev": "npx cypress run --env environmentName=\"dev\"",
     "test:qa": "npx cypress run --env environmentName=\"qa\"",
     "test:stage": "npx cypress run --env environmentName=\"stage\"",
     "test:prod": "npx cypress run --env environmentName=\"prod\"",
-    "test:regression": "npx cypress run --env grepTags=@regression",
-    "test:smoke": "npx cypress run --env grepTags=@smoke",
-    "test:all": "npx cypress run",
     "test:registration": "npx cypress run --spec cypress/e2e/tests/RegistrationTest.cy.js",
     "test:login": "npx cypress run --spec cypress/e2e/tests/LoginTest.cy.js",
     "test:productData": "npx cypress run --spec cypress/e2e/tests/ProductDataTest.cy.js",
@@ -36,6 +40,9 @@
     "@cypress/grep": "^3.1.5",
     "@faker-js/faker": "^8.0.2",
     "cypress": "^13.0.0",
-    "cypress-mochawesome-reporter": "^3.5.1"
+    "cypress-mochawesome-reporter": "^3.5.1",
+    "cypress-multi-reporters": "^1.6.3",
+    "junit-report-merger": "^6.0.2",
+    "mocha-junit-reporter": "^2.2.1"
   }
 }
