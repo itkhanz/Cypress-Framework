@@ -70,6 +70,18 @@ module.exports = defineConfig({
     videoOnFailOnly: false, //If Videos are recorded and added to the report, setting this to true will add the videos only to tests with failures.
   },
 
+  //The number of times to retry a failing test. Can be configured to apply to cypress run or cypress open separately.
+  //If you want to configure retry attempts on a specific test or suite, you can set this by using the test's/suite's configuration.
+  retries : {
+    // Configure retry attempts for `cypress run`
+    // Default is 0
+    runMode: 1,
+    // Configure retry attempts for `cypress open`
+    // Default is 0
+    openMode : 1
+  },
+
+
   //configuration options for e2e configuration object
   e2e: {
 

@@ -8,6 +8,27 @@ Cypress test automation framework built with JavaScript (JS) that follows the Pa
 Application Under Test (AUT):
 https://naveenautomationlabs.com/opencart/index.php
 
+## Features
+
+* Atomic and Independent test cases
+* Robust Locator strategies to target elements
+* No hard coded strings and test data in spec files
+* Hooks to perform the repeated steps for all the tests inside spec
+* Loading test data from external fixtures files i.e. JSON
+* Generate random test data with faker library
+* Loading environment specific configuration and environment variables per environment i.e. dev, stage, prod
+* Ability to filter and run tests with specific tags i.e. regression, smoke
+* Pass browser and mode as environment variable
+* Configure routes (URL endpoints) in a constant config file
+* Usage of OOP Inheritance to extend all the pages from BasePage
+  * Allows to load header and footer componentes from BasePage constructor
+  * Call the `cy.visit()` from BasePage with specified path
+* Test Retries for failing tests
+* Custom commands for login and validation in `cypress/support/commands.js`
+* Intellisense for custom commands in `cypress/support/index.d.ts`
+* Reusable test utilities functions inside `cypress/e2e/utils` 
+
+
 ## Setup
 
 ### Pre-requisites
@@ -60,6 +81,7 @@ https://naveenautomationlabs.com/opencart/index.php
 ---
 
 ## Running tests
+
 * [Command Line](https://docs.cypress.io/guides/guides/command-line)
 * [Environment Variables](https://docs.cypress.io/guides/guides/environment-variables)
 * `npx cypress open` will open the cypress test runner so you can run the tests from it
@@ -93,6 +115,11 @@ https://naveenautomationlabs.com/opencart/index.php
     *  **environmentName** `stage`
     *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
 
+
+* Terminal output shows the results summary as: 
+  
+<img src="doc/results-terminal-output.PNG">
+
 ---
 
 ## Test Reporting
@@ -109,6 +136,8 @@ https://naveenautomationlabs.com/opencart/index.php
   * [mochawesome](https://www.npmjs.com/package/mochawesome)
   * [cypress-allure-plugin](https://www.npmjs.com/package/@shelex/cypress-allure-plugin)
 
-* Terminal output shows the results summary as: 
+* If a test case is failed, then the assertion error, screenshot and video gets attached to report automatically. 
+  * When a test retries, Cypress will continue to take screenshots for each failed attempt or cy.screenshot() and suffix each new screenshot with (attempt n), corresponding to the current retry attempt number.
+
   
-<img src="doc/results-terminal-output.PNG">
+<img src="doc/mochawesome-failed-test-report.png">
