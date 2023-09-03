@@ -1,5 +1,8 @@
 # Cypress Test Automation Framework
 
+[![cypress-framework](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/sh3aqa/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/sh3aqa/runs)
+[![cypress-framework](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/count/sh3aqa/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/sh3aqa/runs)
+
 Cypress test automation framework built with JavaScript (JS) that follows the Page Object Model (POM) design pattern to implement the UI tests for OpenCart E-commerce store.
 
 > If you are a beginner to Cypress, refer to my other repo to refresh your Cypress knowledge which will serve as a starting-point to Cypress testing:
@@ -119,8 +122,7 @@ https://naveenautomationlabs.com/opencart/index.php
     *  **environmentName** `stage`
     *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
 
-* You can add cloud execution and test recording to the existing scripts by appending `--record --key <key>` to the end of npm test scripts. For example, `npm run test:registration -- --env environmentName="local",grepTags="@smoke" --record --key <KEY_VALUE>`
-* 
+* You can add cloud execution and test recording to the existing scripts by appending `-- --record --key <key>` to the end of npm test scripts. For example, `npm run test:registration -- --env environmentName="local",grepTags="@smoke" --record --key <KEY_VALUE>`
 * Terminal output shows the results summary as: 
   
 <img src="doc/results-terminal-output.PNG">
@@ -161,7 +163,7 @@ https://naveenautomationlabs.com/opencart/index.php
   
   ## Multiple Reporters
 
-* [Configure Multiple Reports] (https://docs.cypress.io/guides/tooling/reporters)
+* [Configure Multiple Reports](https://docs.cypress.io/guides/tooling/reporters)
 * Oftentimes we see users wanting the ability to use multiple reporters. When running in CI, you might want to generate a report for junit and perhaps a json report. This is great, but by setting this reporter you won't receive any additional feedback while the tests are running!
 * The framework is configured to report JUnit XML reports, as well as mochawesome HTML reports.
   * Install additional dependencies with `npm install --save-dev cypress-multi-reporters mocha-junit-reporter`
@@ -200,7 +202,7 @@ reporter: 'cypress-multi-reporters',
     "results-junit:combine": "jrm cypress/results/junit/combined-report.xml \"cypress/results/junit/*.xml\"",
     "report:pre": "npm run results-junit:delete",
     "report:post": "npm run results-junit:combine",
-    "test:all": "npm run report:pre && npx cypress run && npm run report:post"
+    "test:report": "npm run report:pre && npx cypress run && npm run report:post"
 }    
 ```
 * `rm` and `true` are native shell commands and so the above scripts will not run in poweshell terminal, therefore use GIT Bash terminal if you are on windows.
