@@ -86,25 +86,36 @@ module.exports = defineConfig({
       // implement node event listeners here
 
 
-      //We can now easily switch between different URLs by passing the name of the application version to the --env flag:
-      const version = config.env.version || 'local';
-      const urls = {
-        local : 'https://naveenautomationlabs.com/opencart/index.php',
-        dev: "https://dev.naveenautomationlabs.com/opencart/index.php",
-        qa: "https://qa.naveenautomationlabs.com/opencart/index.php",
-        stage: "https://stage.naveenautomationlabs.com/opencart/index.php",
-        prod: "https://prod.naveenautomationlabs.com/opencart/index.php"
+      //Load the testing configuration and environment variables from separate JSON files.
+      //we put the baseUrl and envionment specific config settings in settings/env.settings.json
+      const environmentName = config.env.environmentName || 'local';
+      const environmentFilename = `./settings/${environmentName}.settings.json`;
+      console.log('loading %s', environmentFilename);
+      const settings = require(environmentFilename);
+
+      //overwriting the baseUrl from settings file to config
+      if (settings.baseUrl) {
+        config.baseUrl = settings.baseUrl
       }
 
-      // choosing version from urls object
-      config.baseUrl = urls[version];
-
+      // Megring the configuration settings. 
+      // If there are properties with the same name in both objects, the ones from settings.env will overwrite those in config.env.
+      // If there are unique properties in either object, they will also be included in the merged config.env.
+      if (settings.env) {
+        config.env = {
+          ...config.env,
+          ...settings.env,
+        }
+      }
+      console.log('loaded settings for environment %s', environmentName)
 
       //cypress-mochawesome-reporter
       require('cypress-mochawesome-reporter/plugin')(on);  
 
       //cypress grep plugin config for tags
       require('@cypress/grep/src/plugin')(config);
+
+      //It is very important to return the updated config object to the caller, so Cypress knows to use the changes configuration.
       return config;
     },
     

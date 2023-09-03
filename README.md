@@ -35,9 +35,12 @@ https://naveenautomationlabs.com/opencart/index.php
 * Clone git repo
 * Navigate to folder and open terminal
 * Run `npm install` to install the framework dependencies
+
+#### Pre-requistes 
+
+* Register with a new user on the website manually for first time.
+* Save the login credentials for registered user under `cypress/fixtures/users.json`
   
-
-
 > To add IntelliSense for IDE like VS Code, add the [Triple slash directives](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives) to the head of test file or use the [Refernce type declaration via jsconfig.json](https://docs.cypress.io/guides/tooling/IDE-integration#Triple-slash-directives)
 
 
@@ -45,12 +48,13 @@ https://naveenautomationlabs.com/opencart/index.php
 
 ## Configurarion
 
-* Register with a new user on the website.
-* Save the login credentials for registered user under `cypress/fixtures/users.json`
 * Project specific constants are defined under `cypress/config/constants.js`
 * URL routes for pages are defined under `cypress/config/routes.js`. This allows to open the page directly by calling the `open()` method of page.
+* Environment specific Cypress settings are placed inside JSON files per enironment in `settings/{environmentName}.settings.json` file. This allows to load separaete settings per environment.
 * [Configuration](https://docs.cypress.io/guides/references/configuration)
 * [Cypress.config](https://docs.cypress.io/api/cypress-api/config)
+* [How To Load Cypress Settings Per Environment](https://glebbahmutov.com/blog/load-cypress-env-settings/)
+* [Cypress basics: Using baseUrl](https://filiphric.com/cypress-basics-using-baseurl)
 * 
 
 ---
@@ -79,27 +83,14 @@ https://naveenautomationlabs.com/opencart/index.php
   * Similarly you can filter the test based on its title by providing ` --env grep="<substring_in_spec_title>`
 * To run the tests on any specific browser in headed mode:
   * For example, `npm run test:addToCart -- --env grepTags="@smoke" --headed --browser chrome` will run the smoke tests from addToCart spec on chrome browser in headed mode
-* [Cypress basics: Using baseUrl](https://filiphric.com/cypress-basics-using-baseurl)
-* You can also change baseUrl during test execution:
-  * You actually don’t need to set up your baseUrl in the cypress.config.js file at all. Instead, it is possible to resolve it when opening Cypress: `npx cypress open --config baseUrl=https://staging.naveenautomationlabs.com/opencart/index.php`
-  * We can now easily switch between different URLs by passing the name of the application version to the --env flag:
-  ```javascript
-  //will use https://naveenautomationlabs.com/opencart/index.php
-  npx cypress run --env version="local"
-  //will use https://stage.naveenautomationlabs.com/opencart/index.php
-  npx cypress run --env version="stage"
-  //will use https://prod.naveenautomationlabs.com/opencart/index.php
-  npx cypress run --env version="prod"
-  //will use fallback to https://naveenautomationlabs.com/opencart/index.php
-  npx cypress run 
-  ```
+* You can also change baseUrl, configuration files and enironment variables during test execution by passing the `environmentName` enviornment variable.
 * Summing up all the above configuration, here is an example:
-  * `npm run test:registration -- --env version="stage",grepTags="@smoke" --headed --browser chrome` will run tests with following configurations:
+  * `npm run test:registration -- --env environmentName="stage",grepTags="@smoke" --headed --browser chrome` will run tests with following configurations:
     *  **spec** `RegistrationTest.cy.js` 
     *  **browser** `chrome`
     *  **mode** `headed`
     *  **tag** `smoke`
-    *  **version** `stage`
+    *  **environmentName** `stage`
     *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
 
 ---
