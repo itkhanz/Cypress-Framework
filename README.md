@@ -24,14 +24,14 @@ https://naveenautomationlabs.com/opencart/index.php
 * Pass browser and mode as environment variable
 * Configure routes (URL endpoints) in a constant config file
 * Usage of OOP Inheritance to extend all the pages from BasePage
-  * Allows to load header and footer componentes from BasePage constructor
+  * Allows to load header and footer components from BasePage constructor
   * Call the `cy.visit()` from BasePage with specified path
 * Test Retries for failing tests
 * Custom commands for login and validation in `cypress/support/commands.js`
 * Intellisense for custom commands in `cypress/support/index.d.ts`
 * Reusable test utilities functions inside `cypress/e2e/utils` 
 * Support for Cypress Cloud (Dashboard)
-* Multiple reporters configuration (JUnit, cpress-mochawesome-reporter) 
+* Multiple reporters configuration (JUnit XML, cpress-mochawesome-reporter HTML) 
 
 
 ## Setup
@@ -40,6 +40,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 * Install NodeJS and NPM pakcage manager.
 * Code Editor of your choice e.g. Visual Studio Code
+  * Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) VS Code extension from Microsoft to make linting work in IDE
 * GIT Client (for remote tracking)
 * GIT Bash terminal (for Windows)
 
@@ -56,6 +57,21 @@ https://naveenautomationlabs.com/opencart/index.php
 * Add `.gitignore` to exclude files and folders from GIT
 * Add `README.md` to document
 * Start with writing tests under `cypress/e2e` directory.
+
+#### Integrating ESLint
+
+* Install [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) VS Code extension from Microsoft to make linting work in IDE
+* Install eslint in project `npm init @eslint/config --save-dev`
+* Install [Cypress ESLint Plugin](https://www.npmjs.com/package/eslint-plugin-cypress) with `npm install eslint-plugin-cypress --save-dev`
+* Configure the `.eslintsrc.json` to use recommended settings or add custom rules:
+```json
+{
+  "extends": [
+    "plugin:cypress/recommended"
+  ]
+}
+```
+* [Linting Cypress code using ESLint and eslint-plugin-cypress](https://www.youtube.com/watch?v=-YgitwmwFo0)
 
 ### Using existing framework
 
@@ -120,7 +136,7 @@ https://naveenautomationlabs.com/opencart/index.php
     *  **mode** `headed`
     *  **tag** `smoke`
     *  **environmentName** `stage`
-    *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php`
+    *  **baseUrl** `https://stage.naveenautomationlabs.com/opencart/index.php` is automatically teken from `environmentName`
 
 * You can add cloud execution and test recording to the existing scripts by appending `-- --record --key <key>` to the end of npm test scripts. For example, `npm run test:registration -- --env environmentName="local",grepTags="@smoke" --record --key <KEY_VALUE>`
 * Terminal output shows the results summary as: 
@@ -133,7 +149,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 * This framework uses [cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter) to generate HTML test reports.
 * Add the following options to `cypress.config.js`
-  ```
+  ```js
    //cypress-mochawesome-reporter
   reporter: 'cypress-mochawesome-reporter',  
   reporterOptions: {
