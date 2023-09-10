@@ -1,0 +1,8 @@
+version: '3'
+services:
+  cypress:
+    image: cypress_docker:latest  # Replace with the name and tag of your Docker image
+    volumes:
+      - .:/cypress_docker
+    working_dir: /cypress_docker
+    command: test:all

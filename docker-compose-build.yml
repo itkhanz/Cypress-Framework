@@ -1,0 +1,10 @@
+version: '3'
+services:
+  cypress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/cypress_docker
+    working_dir: /cypress_docker
+    command: ["test:all"]

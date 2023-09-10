@@ -11,7 +11,7 @@ Cypress test automation framework built with JavaScript (JS) that follows the Pa
 Application Under Test (AUT):
 https://naveenautomationlabs.com/opencart/index.php
 
-## Features
+## Features 💻
 
 * Atomic and Independent test cases
 * Robust Locator strategies to target elements
@@ -32,9 +32,11 @@ https://naveenautomationlabs.com/opencart/index.php
 * Reusable test utilities functions inside `cypress/e2e/utils` 
 * Support for Cypress Cloud (Dashboard)
 * Multiple reporters configuration (JUnit XML, cpress-mochawesome-reporter HTML) 
+* Cypress with Docker using Dockerfile and docker-compose
+* 
 
 
-## Setup
+## Setup 🛠️
 
 ### Pre-requisites
 
@@ -103,7 +105,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 ---
 
-## Running tests
+## Running tests ⚡
 
 * [Command Line](https://docs.cypress.io/guides/guides/command-line)
 * [Environment Variables](https://docs.cypress.io/guides/guides/environment-variables)
@@ -145,7 +147,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 ---
 
-## Test Reporting
+## Test Reporting 📑
 
 * This framework uses [cypress-mochawesome-reporter](https://www.npmjs.com/package/cypress-mochawesome-reporter) to generate HTML test reports.
 * Add the following options to `cypress.config.js`
@@ -227,7 +229,7 @@ reporter: 'cypress-multi-reporters',
 
 
 
-## Cypress Cloud
+## Cypress Cloud ☁️
 
 * Record a run to see your test results in Cypress Cloud. You can then optimize your test suite, debug failing and flaky tests, Test Replay, watch video, view console output and screenshots, and integrate with your favorite tools.
 * [Cypress Cloud documentation](https://docs.cypress.io/guides/cloud/introduction)
@@ -247,3 +249,38 @@ reporter: 'cypress-multi-reporters',
 <img src="doc/cyress-cloud-specs.PNG">
 
 <img src="doc/cyress-cloud-results.PNG">
+
+## Docker 🐋
+
+If you want to execute the tests using Docker, you can do the following in your terminal (Powershell) at the workspace project.-
+
+```bash
+# Without docker-compose
+
+# Build the docker image from Dockerfile
+> docker build -t cypress_docker .
+
+# Run the following command to run all tests with test:all script inside docker
+> docker run -i -v ${PWD}:/cypress_docker -t cypress_docker:latest test:all
+
+# You can also pass command line parameters optionally to further narrow down your tests
+> docker run -i -v ${PWD}:/cypress_docker -t cypress_docker:latest test:registration -- --env environmentName="local",grepTags="@smoke" --headed chrome
+```
+
+```bash
+# With docker-compose
+
+# Build the docker image from Dockerfile
+> docker build -t cypress_docker .
+
+# Execute the following command to compile the file. <YourVersionTag> may be any value you want
+> docker build -t cypress_docker:<YourVersionTag> .
+
+# Then, execute the following command to run the tests inside of the container
+> docker-compose up
+
+# You can also combine the building of image and running of test in single step
+> docker-compose -f docker-compose-build.yml up --build
+```
+
+* For more detail on cypress with docker, read [cypress docker](./doc/docker.md)

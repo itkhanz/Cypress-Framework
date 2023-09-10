@@ -16,3 +16,5 @@ cypress/downloads
 
 # Values in here will overwrite conflicting environment variables in your Cypress configuration.
 cypress.env.json
+
+cypress_docker
