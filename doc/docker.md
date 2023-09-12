@@ -61,3 +61,14 @@ services:
 * Run both the build and the service using a single docker-compose command: `docker-compose -f docker-compose-build.yml up --build`
   * This command tells Docker Compose to use the `docker-compose-build.yml` file instead of the default `docker-compose.yml`
   * The `--build` flag tells Docker Compose to rebuild the service's image before starting it. This way, Docker Compose will first build the Docker image based on your Dockerfile, and then it will start the service, executing the specified command (`npm run test:all`) inside the container.
+* To run cypress tests on multiple browsers, use `docker-compose -f docker-compose-browsers.yml up` command to spin separate containers that will run tests on chrome, firefox, and edge.
+  * Inspect the container logs in `Docker Desktop` to see the output clearly
+  * To save the report, and media seprately for each container, configure different WORKDIR for each service with a a different Dockerfile
+  
+## Resources
+
+* [Cypress Docker](https://docs.cypress.io/examples/docker)
+* [Cypress Docker GitHub](https://github.com/cypress-io/cypress-docker-images)
+* [Cypress Docer hub](https://hub.docker.com/u/cypress)
+* [How to Run Cypress in Docker With a Single Command](https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/)
+* [Cypress Docker Tutorial: A Step-by-Step Guide With Examples](https://www.lambdatest.com/learning-hub/cypress-docker)

@@ -226,8 +226,7 @@ reporter: 'cypress-multi-reporters',
 * `rm` and `true` are native shell commands and so the above scripts will not run in poweshell terminal, therefore use GIT Bash terminal if you are on windows.
     
 
-
-
+---
 
 ## Cypress Cloud ☁️
 
@@ -250,6 +249,8 @@ reporter: 'cypress-multi-reporters',
 
 <img src="doc/cyress-cloud-results.PNG">
 
+---
+
 ## Docker 🐋
 
 If you want to execute the tests using Docker, you can do the following in your terminal (Powershell) at the workspace project.-
@@ -264,8 +265,9 @@ If you want to execute the tests using Docker, you can do the following in your 
 > docker run -i -v ${PWD}:/cypress_docker -t cypress_docker:latest test:all
 
 # You can also pass command line parameters optionally to further narrow down your tests
-> docker run -i -v ${PWD}:/cypress_docker -t cypress_docker:latest test:registration -- --env environmentName="local",grepTags="@smoke" --headed chrome
+> docker run -i -v ${PWD}:/cypress_docker -t cypress_docker:latest test:registration -- --env environmentName="local",grepTags="@smoke" --headed --browser chrome
 ```
+
 
 ```bash
 # With docker-compose
@@ -279,8 +281,16 @@ If you want to execute the tests using Docker, you can do the following in your 
 # Then, execute the following command to run the tests inside of the container
 > docker-compose up
 
+# To run cross browser tests on multiple browsers
+> docker-compose -f docker-compose-browsers up
+
+# To stop the docker compose execution
+> docker-compose -f docker-compose-browsers.yml down --volumes --remove-orphans
+
 # You can also combine the building of image and running of test in single step
 > docker-compose -f docker-compose-build.yml up --build
 ```
+
+
 
 * For more detail on cypress with docker, read [cypress docker](./doc/docker.md)

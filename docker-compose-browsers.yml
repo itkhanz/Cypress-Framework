@@ -1,0 +1,26 @@
+# Currently it replaces the media and report for previous browser execution because work and report dir is same for all the images
+# Workaround is to use a different image with different WORKDIR for each service so the media will be saved in different directory
+
+version: '3'
+services:
+  cypress-chrome:
+    image: cypress_docker:latest 
+    volumes:
+      - .:/cypress_docker
+    working_dir: /cypress_docker
+    command: test:chrome
+
+  cypress-edge:
+    image: cypress_docker:latest 
+    volumes:
+      - .:/cypress_docker
+    working_dir: /cypress_docker
+    command: test:edge
+
+  cypress-firefox:
+    image: cypress_docker:latest
+    shm_size: '2g'  # Set the shared memory size to 2 gigabytes 
+    volumes:
+      - .:/cypress_docker
+    working_dir: /cypress_docker
+    command: test:firefox
