@@ -30,8 +30,8 @@ pipeline {
         )
         string(
             name: 'RECORD_TESTS', 
-            defaultValue: '', 
-            description: 'Within CI, you can pass --record argument to record the test runs to later view on cypress dashboard.'
+            defaultValue: '--record false', 
+            description: 'Within CI, you can pass --record argument to record the test runs to later view on cypress dashboard. Remove the false to record the tests.'
         )
         choice(
             name: 'TEST_ENVIRONMENT', 
