@@ -148,12 +148,12 @@ pipeline {
                     useWrapperFileDirectly: true
             ])
             
-            echo 'Publishing JUnit XML Results'
-            junit 'cypress/results/junit/combined-report.xml'
+            //To avoid duplicate results, we comment this, and use it within script only
+            //junit 'cypress/results/junit/combined-report.xml'
 
             script {
-                
                 // Get the JUnit test results
+                echo 'Publishing JUnit XML Results'
                 def testResults = junit testResults: 'cypress/results/junit/combined-report.xml'
                 
                 //Mapping build status to slack notification colors
