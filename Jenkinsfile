@@ -140,7 +140,7 @@ pipeline {
             publishHTML([
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
-                    keepAll: false,
+                    keepAll: true,
                     reportDir: 'cypress/results/cypress-mochawesome-reporter',
                     reportFiles: 'index.html',
                     reportName: 'Cypress Mochawesome Report',
