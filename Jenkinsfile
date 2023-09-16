@@ -150,6 +150,28 @@ pipeline {
             
             echo 'Publishing JUnit XML Results'
             junit 'cypress/results/junit/combined-report.xml'
+
+            script {
+                
+                // Get the JUnit test results
+                def testResults = junit testResults: 'cypress/results/junit/combined-report.xml'
+                
+                //Mapping build status to slack notification colors
+                def COLOR_MAP = [
+                    'SUCCESS'   : '#4CAF50',   //Green
+                    'FAILURE'   : '#F44336',   //Red
+                    'UNSTABLE'  : '#FFC107',   //Yellow
+                    'ABORTED'   : '#9E9E9E',   //Grey
+                    'NOT_BUILT' : '#2196F3',   //Blue
+                    'UNKNOWN'   : '#CCCCCC'    //Light Gray
+                ]
+                
+                echo 'Sending Slack Notification'
+                slackSend channel: '#cypress-framework-jenkins',
+                          color: COLOR_MAP[currentBuild.currentResult],
+                          message: "*${currentBuild.currentResult}*\n *Job*: ${env.JOB_NAME} , *Build*: ${env.BUILD_NUMBER}\n *Test Results*: \n\t Total: ${testResults.totalCount} Passed: ${testResults.passCount} Failed: ${testResults.failCount} Skipped: ${testResults.skipCount}\n *Test Run Configuration*:\n\t *Test Script(s)*: ${params.TEST_SPEC}\n\t *Browser*: ${params.BROWSER}  ${params.BROWSER_MODE}\n\t *Tags*: ${params.TAG}\n\t *Environment*: ${params.TEST_ENVIRONMENT}\n\t *Dashboard Recording*: ${params.RECORD_TESTS}\n *Test Report*: ${env.BUILD_URL}Cypress_20Mochawesome_20Report/ \n *More info*: ${env.BUILD_URL}"
+     
+            }
         }
         
         success {
