@@ -11,7 +11,7 @@ Cypress test automation framework built with JavaScript (JS) that follows the Pa
 Application Under Test (AUT):
 https://naveenautomationlabs.com/opencart/index.php
 
-## Features 💻
+## Features 💡
 
 * Atomic and Independent test cases
 * Robust Locator strategies to target elements
@@ -33,7 +33,7 @@ https://naveenautomationlabs.com/opencart/index.php
 * Support for Cypress Cloud (Dashboard)
 * Multiple reporters configuration (JUnit XML, cpress-mochawesome-reporter HTML) 
 * Cypress with Docker using Dockerfile and docker-compose
-* 
+* Continuous Integration CI with Jenkins 
 
 
 ## Setup 🛠️
@@ -92,7 +92,7 @@ https://naveenautomationlabs.com/opencart/index.php
 
 --- 
 
-## Configurarion
+## Configurarion ⚙️
 
 * Project specific constants are defined under `cypress/config/constants.js`
 * URL routes for pages are defined under `cypress/config/routes.js`. This allows to open the page directly by calling the `open()` method of page.
@@ -294,3 +294,28 @@ If you want to execute the tests using Docker, you can do the following in your 
 
 
 * For more detail on cypress with docker, read [cypress docker](./doc/docker.md)
+
+## Continuous Integration CI 🚀
+
+The Project is configured to run Cypress in Continuous Integration with multiple CI Providers.
+
+### Jenkins Integration
+
+<img src="doc/jenkins.png">
+
+* This framework supports the Continous Integration CI with Jenkins, and offers fully customize execution with support for:
+  * Jenkinsfile Pipeline Script
+  * Build with Parameters
+    * Allows to select test specs, browser, browser mode, tags, environment, dashboard recording.
+  * Publishes Mochawesome HTML report via HTML Publisher Plugin
+  * Parses JUnit XML results to display a summary and trends of test results
+  * Sends a Slack Notification with test results summary, link to test report, and job.
+* See the [Jenkinsfile](./Jenkinsfile) to see how the pipeline is configured.
+* For more detail on cypress with Jenkins, read [Cypress Jenkins](./doc/jenkins.md)
+
+
+<img src="doc/jenkins-pipieline-dashboard.PNG">
+
+<img src="doc/jenkins-pipeline-config.PNG">
+
+<img src="doc/jenkins-slack-notification.PNG">

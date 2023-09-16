@@ -10,6 +10,7 @@ pipeline {
         NO_COLOR = '1'
     }*/
 
+    //NoAnsi Color Plugin helps to avoid weird Jenkins console output and displays the console output in color format
     options {
         ansiColor('xterm')
     }
@@ -97,6 +98,7 @@ pipeline {
            }
        }
        
+       //This deletes any older xml results files present in the directory
        stage('Stage 3 - Clearing old reports') {
            steps {
                bat "npm run report:pre"
@@ -125,6 +127,7 @@ pipeline {
             }
         }
         
+        //Mocha JUnit Reporter produces separate XML for each spec result, so we merge the test results into one XML file 
        stage('Stage 5 - Merging JUnit reports') {
            steps {
                bat "npm run report:post"
